@@ -51,6 +51,7 @@ LABEL_ALIASES = ("y_label", "label", "y", "target")
 MASK_ALIASES = ("mask_t", "channel_mask", "mask")
 
 
+@dataclass
 class PreprocessConfig:
     input_dir: Path
     output_dir: Path
@@ -74,6 +75,7 @@ class PreprocessConfig:
         (self.output_dir / "logs").mkdir(parents=True, exist_ok=True)
 
 
+@dataclass(frozen=True)
 class ResolvedKeys:
     raw_past: Optional[str]
     raw_t: Optional[str]
@@ -86,6 +88,7 @@ class ResolvedKeys:
     mask: Optional[str]
 
 
+@dataclass(frozen=True)
 class FileSummary:
     source_file: str
     patient_name: str
@@ -102,6 +105,7 @@ class FileSummary:
     label_counts: Dict[int, int]
 
 
+@dataclass(frozen=True)
 class ShardSummary:
     shard_file: str
     source_file: str
@@ -113,6 +117,7 @@ class ShardSummary:
     label_counts: Dict[int, int]
 
 
+@dataclass(frozen=True)
 class ReferenceShapes:
     raw_past: Tuple[int, ...]
     raw_t: Tuple[int, ...]
